@@ -52,14 +52,71 @@ console.log(combinaLista(primeiraLista, segundaLista))
 // Funções Nativas:
 
 // 6- Escreva um programa que calcule a média dos valores em um array utilizando a função reduce() e length.
+const listaDeValores = [6, 3, 1, 4, 5, 17]
+const divisor = listaDeValores.length
+
+const calculaMedia =
+  listaDeValores.reduce(
+    (acumulador, resultadoDaSoma) => acumulador + resultadoDaSoma,
+    0
+  ) / divisor
+
+console.log(calculaMedia)
 
 // 7- Crie uma função que retorne a data e hora atuais no formato legível: "Dia/Mês/Ano Hora:Minuto:Segundo".
+const dataAtualFormatada = () => {
+  const dataAtual = new Date()
+  const dia = dataAtual.getDate().toString().padStart(2, '0')
+  const mes = (dataAtual.getMonth() + 1).toString().padStart(2, '0')
+  const ano = dataAtual.getFullYear()
+  const hora = dataAtual.getHours().toString().padStart(2, '0')
+  const minutos = dataAtual.getMinutes().toString().padStart(2, '0')
+  const segundos = dataAtual.getSeconds().toString().padStart(2, '0')
+
+  return `${dia}/${mes}/${ano} ${hora}:${minutos}:${segundos}`
+}
+
+console.log(dataAtualFormatada())
 
 // 8- Implemente um programa que encontre o maior valor em um array usando a função Math.max().
 
+let listaDeNumeros = [56, 12, 48, 96, 23, 15]
+
+const encontraMaiorNumero = listaDeNumeros =>
+  listaDeNumeros.reduce(
+    (acumulador, valor) => Math.max(acumulador, valor),
+    -Infinity
+  )
+
+console.log(encontraMaiorNumero(listaDeNumeros))
+
 // 9- Escreva uma função que gere um número inteiro aleatório entre dois valores dados como argumentos.
 
+let valorMinimo = Number(prompt('Digite o valor mínimo: '))
+let valorMaximo = Number(prompt('Digite o valor máximo: '))
+
+const geraInteiroAleatorio = (valorMinimo, valorMaximo) =>
+  Math.floor(Math.random() * (valorMaximo - valorMinimo)) + valorMinimo
+
+console.log(geraInteiroAleatorio(valorMinimo, valorMaximo))
+
 // 10- Crie um programa que verifique se um número dado pelo usuário é um número primo usando uma função.
+let numeroProcurado = prompt('Digite um número: ')
+
+const procuraNumeroPrimo = numeroProcurado => {
+  let verificador = 0
+  for (count = 1; count <= numeroProcurado; count++) {
+    if (numeroProcurado % count === 0) {
+      verificador++
+    }
+  }
+
+  return verificador === 2 || Number(numeroProcurado) === 1
+    ? 'Este é um número primo!'
+    : 'Este não é um número primo!'
+}
+
+console.log(procuraNumeroPrimo(numeroProcurado))
 
 // Coerção e Tipos de Dados:
 
