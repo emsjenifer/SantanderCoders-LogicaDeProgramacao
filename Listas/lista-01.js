@@ -111,7 +111,7 @@ const procuraNumeroPrimo = numeroProcurado => {
     }
   }
 
-  return verificador === 2 || Number(numeroProcurado) === 1
+  return verificador === 2
     ? 'Este é um número primo!'
     : 'Este não é um número primo!'
 }
@@ -121,16 +121,56 @@ console.log(procuraNumeroPrimo(numeroProcurado))
 // Coerção e Tipos de Dados:
 
 // 11- Declare uma variável com valor "5" (string) e outra variável com valor 2 (número). Multiplique as duas variáveis e explique o resultado.
+let valorString = '5'
+let valorNumber = 2
+
+const multiplicaTiposDiferentes = (valorNumber, valorString) =>
+  valorNumber * valorString
+
+console.log(multiplicaTiposDiferentes(valorNumber, valorString))
+console.log(
+  'Ocorreu uma coerção implícita da variável do tipo string para o tipo number ao utilizar o operador aritmético * para realizar o cálculo entre as variáveis. Por conta da coerção, seu retorno será sempre um number mesmo que as duas variáveis sejam do tipo string.'
+)
 
 // 12- Converta a string "123" em um número inteiro e armazene-o em uma variável.
+let numeroEmString = '123'
+let numeroConvertido = Number(numeroEmString)
+console.log(numeroConvertido)
 
 // 13- Escreva um programa que adicione um número e uma string.
+let parametroNumero = 26
+let parametroString = '95'
+
+const adicao = (parametroNumero, parametroString) =>
+  parametroNumero + parametroString
+
+console.log(adicao(parametroNumero, parametroString))
 
 // 14- Explique o resultado e discuta a coerção que ocorre.
+console.log(
+  'Ocorreu uma coerção implícita da variável de tipo número para string, concatenando o retorno da função, pois quando há uma string na operação, mesmo que a outra variável seja numérica ela é convertida em string pelo operador + que faz a concatenação.'
+)
 
 // 15- Declare uma variável com o valor null e outra variável com o valor undefined. Verifique se são iguais em valor e tipo.
+let valorNulo = null
+let valorNaoDefinido = undefined
+
+const verificaValor = (valorNulo, valorNaoDefinido) =>
+  valorNulo == valorNaoDefinido
+console.log(verificaValor(valorNulo, valorNaoDefinido))
+
+const verificaTipo = (valorNulo, valorNaoDefinido) =>
+  typeof valorNulo === typeof valorNaoDefinido
+console.log(verificaTipo(valorNulo, valorNaoDefinido))
 
 // 16- Crie um programa que determine se uma variável é do tipo função usando o operador typeof.
+let um = 1
+let dois = 2
+
+const funcao = (um, dois) => um + dois
+const verificaTypeOf = typeof funcao
+
+console.log(verificaTypeOf)
 
 // Operadores Matemáticos e Lógicos:
 
