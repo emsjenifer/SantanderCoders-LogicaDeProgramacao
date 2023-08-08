@@ -101,19 +101,18 @@ const geraInteiroAleatorio = (valorMinimo, valorMaximo) =>
 console.log(geraInteiroAleatorio(valorMinimo, valorMaximo))
 
 // 10- Crie um programa que verifique se um número dado pelo usuário é um número primo usando uma função.
-let numeroProcurado = prompt('Digite um número: ')
+let numeroProcurado = Number(prompt('Digite um número: '))
 
 const procuraNumeroPrimo = numeroProcurado => {
   let verificador = 0
-  for (count = 1; count <= numeroProcurado; count++) {
+  for (count = 1; count <= Math.sqrt(numeroProcurado); count++) {
     if (numeroProcurado % count === 0) {
       verificador++
     }
   }
 
-  return verificador === 2
-    ? 'Este é um número primo!'
-    : 'Este não é um número primo!'
+  return (verificador !== 1 || numeroProcurado === 1)
+    ? 'Este não é um número primo!' : 'Este é um número primo!'
 }
 
 console.log(procuraNumeroPrimo(numeroProcurado))
@@ -155,12 +154,10 @@ console.log(
 let valorNulo = null
 let valorNaoDefinido = undefined
 
-const verificaValor = (valorNulo, valorNaoDefinido) =>
-  valorNulo == valorNaoDefinido
+const verificaValor = (valorNulo, valorNaoDefinido) => valorNulo == valorNaoDefinido
 console.log(verificaValor(valorNulo, valorNaoDefinido))
 
-const verificaTipo = (valorNulo, valorNaoDefinido) =>
-  typeof valorNulo === typeof valorNaoDefinido
+const verificaTipo = (valorNulo, valorNaoDefinido) => typeof valorNulo === typeof valorNaoDefinido
 console.log(verificaTipo(valorNulo, valorNaoDefinido))
 
 // 16- Crie um programa que determine se uma variável é do tipo função usando o operador typeof.
@@ -176,10 +173,44 @@ console.log(verificaTypeOf)
 
 // 18- Escreva um programa que calcule o resultado da expressão: (10 + 5) * 3 / 20.
 
+const expressaoMatematica = () => ((10 + 5) * 3) / 20
+
+console.log(expressaoMatematica())
+
 // 19- Crie uma função que verifique se um número é positivo e ímpar ao mesmo tempo.
+let numeroDigitado = prompt('Digite um número: ')
+
+const verificaNumeroDigitado = numeroDigitado => numeroDigitado > 0 && numeroDigitado % 2 !== 0
+  ? 'Número é positivo e ímpar ao mesmo tempo' : 'Número não é positivo e ímpar ao mesmo tempo'
+
+console.log(verificaNumeroDigitado(numeroDigitado))
 
 // 20- Implemente um programa que determine se um ano fornecido pelo usuário é bissexto ou não, considerando as regras: (a) Anos divisíveis por 4 são bissextos; (b) Anos divisíveis por 100 não são bissextos, a menos que também sejam divisíveis por 400.
+let anoDigitado = prompt('Digite o ano: ')
+
+const verificaAnoBissexto = anoDigitado => anoDigitado % 4 === 0 || (anoDigitado % 100 === 0 && anoDigitado % 400 === 0)
+  ? `O ano de ${anoDigitado} é bissexto` : `O ano de ${anoDigitado}  não é bissexto`
+
+console.log(verificaAnoBissexto(anoDigitado))
 
 // 21- Escreva uma função que determine se uma pessoa tem permissão para entrar em um clube: idade mínima de 18 anos e não estar na lista de membros banidos (use operadores lógicos).
+const listaBanidos = ['bárbara', 'camilla', 'michael', 'gleice']
+
+let idade = prompt('Qual a sua idade? ')
+let nome = (prompt('Qual o seu nome? ')).toLowerCase()
+
+const verificaIdadeENome = (listaBanidos, idade, nome) => idade >= 18 && !listaBanidos.includes(nome)
+  ? 'Pode entrar no clube' : 'Não pode entrar no clube'
+
+console.log(verificaIdadeENome(listaBanidos, idade, nome))
 
 // 22- Crie um programa que simule um sistema de login. Peça ao usuário um nome de usuário e uma senha, e verifique se correspondem aos valores esperados.
+const chavesDeLogin = ['amsgl', 258574]
+
+let nickname = prompt('nickname: ')
+let senha = Number(prompt('senha: '))
+
+const verificaLogin = (nickname, senha, chavesDeLogin) => (chavesDeLogin.includes(nickname) && chavesDeLogin.includes(senha))
+  ? `Bem vindo ${nickname}!` : 'Dados incorretos'
+
+console.log(verificaLogin(nickname, senha, chavesDeLogin))
