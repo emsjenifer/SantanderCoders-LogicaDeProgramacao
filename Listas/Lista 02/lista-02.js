@@ -467,11 +467,90 @@ console.log(somaNumeroDe1a100());
 // Use uma estrutura condicional para verificar se a letra é uma vogal ou uma consoante.
 // Exiba uma mensagem indicando se a letra é uma vogal ou consoante.
 
+const vogal = ["a", "e", "i", "o", "u"];
+const consoante = [
+  "b",
+  "c",
+  "d",
+  "f",
+  "g",
+  "h",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "p",
+  "q",
+  "r",
+  "s",
+  "t",
+  "v",
+  "w",
+  "x",
+  "y",
+  "z",
+];
+
+const verificaLetra = (vogal, consoante) => {
+  let letraProcurada = prompt("Digite uma letra:").toLowerCase();
+  if (vogal.map((item) => item === letraProcurada).includes(true)) {
+    console.log(`A letra '${letraProcurada}' é uma vogal.`);
+  } else if (consoante.map((item) => item === letraProcurada).includes(true)) {
+    console.log(`A letra '${letraProcurada}' é uma consoante.`);
+  } else {
+    console.log(`'${letraProcurada}' não é uma letra.`);
+  }
+};
+
+verificaLetra(vogal, consoante);
+
 // 32- Calculadora simples
 
 // Peça ao usuário para digitar dois números e uma operação matemática (+, -, *, /).
 // Use uma estrutura condicional para realizar a operação selecionada nos números dados.
 // Exiba o resultado da operação.
+
+const calculadora = () => {
+  let primeiroNumero = Number(prompt("Digite o primeiro número:"));
+  let segundoNumero = Number(prompt("Digite o segundo número:"));
+  let operador = prompt("Digite um operador (+, -, *, /):");
+
+  switch (operador) {
+    case "+":
+      console.log(
+        `${primeiroNumero} + ${segundoNumero} = ${
+          primeiroNumero + segundoNumero
+        }`
+      );
+      break;
+    case "-":
+      console.log(
+        `${primeiroNumero} - ${segundoNumero} = ${
+          primeiroNumero - segundoNumero
+        }`
+      );
+      break;
+    case "*":
+      console.log(
+        `${primeiroNumero} x ${segundoNumero} = ${
+          primeiroNumero * segundoNumero
+        }`
+      );
+      break;
+    case "/":
+      console.log(
+        `${primeiroNumero} / ${segundoNumero} = ${
+          primeiroNumero / segundoNumero
+        }`
+      );
+      break;
+    default:
+      console.error("Operador inválido.");
+  }
+};
+
+calculadora();
 
 // 33- Verificação de número primo
 
@@ -479,16 +558,76 @@ console.log(somaNumeroDe1a100());
 // Use uma estrutura condicional para verificar se o número é primo (divisível apenas por 1 e por ele mesmo).
 // Exiba uma mensagem indicando se o número é primo ou não.
 
+const verifcaNumeroPrimo = () => {
+  let numeroProcurado = Number(prompt("Digite um número: "));
+  let verificador = 0;
+
+  for (count = 1; count <= Math.sqrt(numeroProcurado); count++) {
+    if (numeroProcurado % count === 0) {
+      verificador++;
+    }
+  }
+
+  return verificador !== 1 || numeroProcurado === 1
+    ? `${numeroProcurado} não é um número primo.`
+    : `${numeroProcurado} é um número primo.`;
+};
+
+console.log(verifcaNumeroPrimo());
+
 // 34- Conversão de temperatura
 
 // Peça ao usuário para digitar uma temperatura em graus Celsius.
 // Use uma estrutura condicional para converter a temperatura para Fahrenheit ou Kelvin, de acordo com a escolha do usuário.
 // Exiba o resultado da conversão.
 
+const mostraTemperatura = () => {
+  let temperatura = prompt("Digite a temperatura em graus Celsius:");
+  let escolhaDeGrau = prompt(
+    "Deseja converter a temperatura para a escala Fahrenheit? (s/n)"
+  ).toLowerCase();
+  let retornoTemperatura = "";
+
+  escolhaDeGrau === "n"
+    ? (retornoTemperatura = `A temperatura é de ${temperatura}º graus Celsius.`)
+    : (retornoTemperatura = `A temperatura é de ${
+        (temperatura * 9) / 5 + 32
+      }º na escala Fahrenheit.`);
+
+  return retornoTemperatura;
+};
+
+console.log(mostraTemperatura());
+
 // 35- Dia da semana por extenso
 
 // Peça ao usuário para digitar um número de 1 a 7 representando um dia da semana.
 // Use uma estrutura condicional switch para exibir o nome completo do dia da semana correspondente ao número digitado.
+
+const retornaDiaDaSemana = () => {
+  let numero = Number(prompt("Escolha um número de 1 a 7:"));
+
+  switch (numero) {
+    case 1:
+      return `${numero} corresponde a Domingo.`;
+    case 2:
+      return `${numero} corresponde a Segunda-feira.`;
+    case 3:
+      return `${numero} corresponde a Terça-feira.`;
+    case 4:
+      return `${numero} corresponde a Quarta-feira.`;
+    case 5:
+      return `${numero} corresponde a Quinta-feira.`;
+    case 6:
+      return `${numero} corresponde a Sexta-feira.`;
+    case 7:
+      return `${numero} corresponde a Sábado.`;
+    default:
+      return "Número inválido. Por favor, escolha um número de 1 a 7.";
+  }
+};
+
+console.log(retornaDiaDaSemana());
 
 // 36- Verificação de ano bissexto
 
@@ -496,17 +635,64 @@ console.log(somaNumeroDe1a100());
 // Use uma estrutura condicional para verificar se o ano é bissexto (divisível por 4 e não por 100, exceto se for divisível por 400).
 // Exiba uma mensagem indicando se o ano é bissexto ou não.
 
+const verificaAnoBissexto = () => {
+  let anoDigitado = prompt("Digite o ano: ");
+
+  anoDigitado % 4 === 0 || (anoDigitado % 100 === 0 && anoDigitado % 400 === 0)
+    ? `O ano de ${anoDigitado} é bissexto`
+    : `O ano de ${anoDigitado}  não é bissexto`;
+};
+
+console.log(verificaAnoBissexto());
+
 // 37- Contador de vogais e consoantes
 
 // Peça ao usuário para digitar uma palavra ou frase.
 // Use uma estrutura condicional para contar o número de vogais e consoantes na entrada.
 // Exiba os resultados separadamente.
 
+const contaLetra = (vogal, consoante) => {
+  let frase = prompt("Digite uma frase:").toLowerCase();
+  let letrasDaFrase = frase.match(/[a-zA-Z]/g);
+
+  let quantidadeVogais = 0;
+  let quantidadeConsoantes = 0;
+
+  letrasDaFrase.forEach(function (letra) {
+    if (vogal.includes(letra)) {
+      quantidadeVogais++;
+    }
+
+    if (consoante.includes(letra)) {
+      quantidadeConsoantes++;
+    }
+  });
+
+  return `A frase possui ${quantidadeVogais} vogais e ${quantidadeConsoantes} consoantes.`;
+};
+
+console.log(contaLetra(vogal, consoante));
+
 // 38- Verificação de número positivo, negativo ou zero
 
 // Peça ao usuário para digitar um número.
 // Use uma estrutura condicional para verificar se o número é positivo, negativo ou zero.
 // Exiba uma mensagem indicando a natureza do número.
+const verificaNumero = () => {
+  let numero = prompt("Digite um número:");
+
+  if (numero > 0) {
+    console.log(`${numero} é um número positivo`);
+  } else if (numero < 0) {
+    console.log(`${numero} é um número negativo`);
+  } else {
+    console.log(
+      `${numero} é um número neutro, não sendo nem positivo nem negativo`
+    );
+  }
+};
+
+verificaNumero();
 
 // 39- Sistema de bilhete de cinema
 
@@ -514,8 +700,42 @@ console.log(somaNumeroDe1a100());
 // Use uma estrutura condicional para determinar o preço do bilhete de cinema de acordo com as regras: menores de 18 anos pagam $5, estudantes pagam $8 e os demais pagam $10.
 // Exiba o preço do bilhete.
 
+const verificaValorDoBilhete = () => {
+  let idade = prompt("Qual a sua idade?");
+  let carteiraDeEstudante = prompt(
+    "Possui carteira de estudante? (sim/não)"
+  ).toLowerCase();
+
+  if (idade < 18) {
+    console.log("O valor do bilhete é R$5,00");
+  } else if (idade >= 18) {
+    if (carteiraDeEstudante === "sim") {
+      console.log("O valor do bilhete é R$8,00");
+    } else {
+      console.log("O valor do bilhete é R$10,00");
+    }
+  }
+};
+
+verificaValorDoBilhete();
+
 // 40- Verificação de palíndromo
 
 // Peça ao usuário para digitar uma palavra ou frase.
 // Use uma estrutura condicional para verificar se a entrada é um palíndromo (lê-se igual de trás para frente e de frente para trás).
 // Exiba uma mensagem indicando se a entrada é um palíndromo ou não.
+
+const verificaPalindromo = () => {
+  let palavras = prompt("Digite um palavra ou frase:")
+    .toLowerCase()
+    .replace(/[^a-zA-Z0-9]/g, "");
+  let palavasInvertidas = palavras.split("").reverse().join("");
+
+  if (palavras === palavasInvertidas) {
+    return console.log(`"${palavras}" é um palíndromo.`);
+  } else {
+    return console.log(`"${palavras}" não é um palíndromo.`);
+  }
+};
+
+verificaPalindromo();
