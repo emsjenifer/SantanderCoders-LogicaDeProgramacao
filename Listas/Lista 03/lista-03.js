@@ -71,6 +71,14 @@ const maiorEMenorNumero = (numeros) =>
 console.log(maiorEMenorNumero(numeros));
 
 // Escreva uma função que calcule a sequência de Fibonacci até um determinado número de termos.
+const calculaFibonacci = (termo) =>
+  termo <= 2
+    ? [1, 1]
+    : ((fib) => [...fib, fib[termo - 2] + fib[termo - 3]])(
+        calculaFibonacci(termo - 1)
+      );
+
+console.log(calculaFibonacci(10));
 
 // Crie uma função que verifique se um número é primo.
 const procuraNumeroPrimo = (numero, divisor = 2) => {
@@ -95,13 +103,55 @@ const removeNumerosDuplicados = (numeros) =>
 console.log(removeNumerosDuplicados(numeros));
 
 // Crie uma função que ordene um array de números em ordem crescente.
+const ordenandoNumeros = (numeros) => numeros.sort((a, b) => a - b);
+
+console.log(ordenandoNumeros(numeros));
 
 // Escreva uma função que retorne o número de dias entre duas datas.
+const data1 = new Date("2023-08-15");
+const data2 = new Date("2023-08-25");
+
+const diferencaDeDias = (data1, data2) =>
+  Math.abs(Math.floor((data1 - data2) / (1000 * 60 * 60 * 24)));
+
+console.log(diferencaDeDias(data1, data2));
 
 // Crie uma função que calcule o raio de um círculo com base em sua área.
+const calculaRaio = (area) => Math.sqrt(area / 3.14159).toFixed(2);
+
+console.log(calculaRaio(24));
 
 // Escreva uma função que encontre o segundo maior valor em um array de números.
+function segundoMaiorNumero(numeros) {
+  let max1 = -Infinity;
+  let max2 = -Infinity;
+
+  for (let numero of numeros) {
+    if (numero > max1) {
+      max2 = max1;
+      max1 = numero;
+    } else if (numero > max2 && numero !== max1) {
+      max2 = numero;
+    }
+  }
+
+  return max2;
+}
+
+console.log(segundoMaiorNumero(numeros));
 
 // Crie uma função que converta um valor em dólares para outra moeda com base em uma taxa de câmbio.
+const converteValor = (valorEmDolares, taxaDeCambio) =>
+  valorEmDolares * taxaDeCambio;
+
+console.log(converteValor(100, 5.4));
 
 // Escreva uma função que verifique se duas strings são anagramas (contêm as mesmas letras, mas em ordens diferentes).
+const saoAnagramas = (palavra1, palavra2) =>
+  palavra1.split("").sort().join("") === palavra2.split("").sort().join("")
+    ? `${palavra1} e ${palavra2} são anagramas.`
+    : `${palavra1} e ${palavra2} não são anagramas.`;
+
+console.log(saoAnagramas("roma", "amor"));
+console.log(saoAnagramas("perda", "padre"));
+console.log(saoAnagramas("topa", "tudo"));
